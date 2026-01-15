@@ -1,0 +1,38 @@
+@use "./variables" as *;
+@use "./fonts" as *;
+//반응형
+$mobile: 768px;
+
+//반응형 처리
+@mixin respond {
+  @media all and (min-width: $mobile) {
+    @content;
+  }
+}
+
+//레이아웃 플렉스
+@mixin flex-layout($dir: row, $just: center, $align: center, $gap: 1rem) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin btn-theme( $color:$color-black, $bg:$color-btn, $hover-bg: $color-white, $hover-text: $color-black, $status: null )
+{ display: flex; 
+  align-items: center;        
+  justify-content: center; 
+  line-height: 1;
+  border-radius: $radius-btn;
+  width: 300px;
+  padding: 1rem 0.6rem;
+  box-sizing: border-box;
+  color: $color; 
+  background-color: $bg; 
+  border: none; 
+  cursor: pointer; 
+  transition: 0.3s;
+  &:hover{ background-color: $hover-bg; color: $hover-text; 
+    box-shadow: inset 0 -2px 6px rgba($color-btn, .22); } 
+  @include respond{ border-radius: $radius-btn; } }

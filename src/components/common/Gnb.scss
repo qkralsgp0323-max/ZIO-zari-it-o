@@ -1,0 +1,83 @@
+@use "../../assets/scss/fonts" as *;
+@use "../../assets/scss/variables" as *;
+@use "../../assets/scss/mixins" as *;
+
+.gnb-mobile {
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999; // 지도 위로
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+
+  .menu {
+
+    @include flex-layout(row, space-around);
+    color: #7F31BC;
+    width: 100%;
+    padding: 0.5rem;
+    border-top: 0.3px solid rgba(148, 148, 148, 0.45);
+    border-top-style: groove;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    li {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+
+      &:hover {
+        background-color: rgba(148, 148, 148, 0.45);
+        box-shadow: 0 3px 3px #eee;
+        backdrop-filter: saturate(100%) blur(5px);
+      }
+    }
+  }
+
+  @include respond {
+    display: none;
+  }
+}
+
+
+.gnb-desktop {
+  display: none;
+  // position: absolute;
+  // top: 140px;
+  // left: 160px;
+  margin-top: 7rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 10;
+  cursor: pointer;
+  .gnb-wrap {
+    @include flex-layout(row, flex-end, center, 1rem);
+    .gnb-list {
+      background-color: $color-real-white ;
+      .gnb-txt {
+        width: 230px;
+        padding: 1rem;
+        border-bottom: 1px solid $color-bbb;
+        @include flex-layout($just : space-between, $gap: 0);
+        @include body-b();
+      }
+    }
+  }
+
+
+  @include respond {
+    display: block;
+  }
+}

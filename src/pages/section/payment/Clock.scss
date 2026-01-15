@@ -1,0 +1,28 @@
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/fonts" as *;
+@use "../../../assets/scss/mixins" as *;
+
+#clock {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background-color: $color-btn;
+  border-radius: 1rem;
+  @include flex-layout($dir:column);
+
+  .in-time, .out-time {
+    width: 100%;
+    @include flex-layout($just:space-around, $gap:0);
+    p {
+      display: inline-block;
+      color: $color-main;
+      width: 40%;
+      height: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    .clock-input{
+      width: 50%;
+    }
+  }
+}

@@ -1,0 +1,251 @@
+@use "../../assets/scss/fonts" as *;
+@use "../../assets/scss/variables" as *;
+@use "../../assets/scss/mixins" as *;
+.popup-overlay{
+    position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  opacity: 0;
+  transition: opacity 260ms ease, background 260ms ease;
+  z-index: 9998;
+   &.is-open {
+    opacity: 1;
+  }
+
+ .popup {
+  @include flex-layout(column,center);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 380px;         
+  margin: 0 auto;     
+  max-width: calc(100vw - 32px);       
+  height: 40vh;              
+  background: #fff;
+  border-radius: 16px;
+  padding: 0 16px;
+  transform: translateY(100%); 
+  opacity: 1;
+  transition: transform 260ms ease;
+  z-index: 9999;
+  backface-visibility: hidden;
+  will-change: transform;
+  &.is-open {
+    transform: translateY(-30%); 
+  }
+   
+
+      input{
+            position: fixed;
+            text-align: center;
+            // left: 0;
+            // right: 0;
+            top: 5%;
+            width: 200px;
+            z-index: 9999; // 지도 위로
+            padding: 0.5rem 0;
+            @include caption-r();
+            border-radius: 15px;
+            border: none;
+            background-color: rgba(148, 148, 148, 0.25);
+            box-shadow: 0 3px 3px rgba($color: #000000, $alpha: 0.33);
+            backdrop-filter: saturate(100%) blur(5px);
+            transition: 0.5s;
+        &:focus{
+            width: 250px;
+            outline: none;
+            border: 0.5px solid rgba(148, 148, 148, 0.45);
+        }
+    }
+.popup-close {
+  position: fixed;
+  top: 8%;
+  left: 90%;
+  transform: translateX(50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  z-index: 9999;
+}
+
+/* X 버튼 더 오른쪽 끝 */
+
+/* 내용 */
+.popup-content {
+  height: 100%;
+  overflow: hidden;
+}
+
+.popup-track {
+  width: 200%;
+  height: 100%;
+  display: flex;
+  transition: transform 280ms ease;
+  transform: translateX(0);
+}
+
+.popup-content.is-detail .popup-track {
+  transform: translateX(-50%);
+}
+
+.popup-panel {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden; // 리스트 스크롤/상세 스크롤 필요하면
+  overflow-y: auto;
+  min-width: 0;
+  scrollbar-gutter: stable;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.popup-list {
+  @include flex-layout(column,center);
+  position: static;
+  // padding: 1rem;
+  transform: translateY(410%);   
+  top: 0;
+  height: 100px;
+  @include caption-r();
+  font-size: 14px;
+  // Firefox
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+  padding: 1rem;
+  li {
+    @include flex-layout(row,left);
+    width: 348px;
+    background: #e4e4e4;
+    cursor: pointer;
+    padding: 0.5rem;
+    // margin: 1rem 0;
+    border-radius: 16px;
+  .img{
+    padding: 0 2rem ;
+  .thumb {   
+    @include flex-layout(row);
+  width: 60px;   
+  height: 60px;   
+  border-radius: 16px;   
+  object-fit: cover;  
+  flex: 0 0 auto; }  
+}
+  
+  .meta {
+  min-width: 0; 
+}
+  .meta .title { font-weight: 600; } 
+  
+  .meta .addr { color: #777; }
+  .popup-content:not(.is-detail) .popup-list .thumb {
+  width: 60px;
+  height: 60px;
+}
+ }
+}
+}
+}
+.popup-detail{
+  
+  @include flex-layout(column,center);
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  .b{
+    @include flex-layout(row);
+    width: 100px;
+    right: -15%;
+    top: 5%;
+    transform: translateY(100%);
+    z-index: 9999;
+  }
+  .detail{
+    @include flex-layout(row,space-around);
+    padding: 0.5rem;
+    .thumb{
+      object-fit: cover;
+      width: 120px;
+      height: 120px;
+    }
+    
+    .txt{
+      @include caption-r;
+      font-size: 12px;
+      width: 100%;
+      .address{
+        @include flex-layout(row,space-around);
+      .icon-copy{
+        cursor: pointer;
+        z-index: 9999;
+      }
+    }
+    }
+  }
+  .keyword{
+    @include flex-layout(column,space-around);
+    width: 80%;
+    transform: translateX(-26%);
+    padding: 0 2rem;
+    // p{padding: 1rem}
+    .key{
+    position: fixed;
+    @include flex-layout(row,space-around);
+    width: 60%;
+    left: 45%;
+    transform: translateY(35px);
+    overflow: scroll;
+    scrollbar-width: none;
+    button{
+    border: none;
+    border-radius: 16px;
+    background-color: #B67FDB;
+    color: #eee;
+    width: 86px;
+    height: 34px;
+    @include caption-r();
+    font-size: 12px;
+    }}
+}
+  .b{
+    position: fixed;
+    width: 50%;
+    // height: 30px;
+    @include flex-layout(row,left);
+    .back{
+    cursor: pointer;
+    background: none;
+    width: 10px;
+    height: 10px;
+    border: none;
+    &:hover{
+      color: #777
+    }
+  }
+}
+.btn{
+  @include flex-layout;
+  height: 18vh;
+  bottom: -8%;
+  transform: translateY(60%);
+  button{
+  @include btn-theme;
+  width: 135px;
+  height: 35px;
+  }
+}
+}
+@include respond{
+  .popup{
+    
+  input{
+    display: none;
+  }
+}
+}

@@ -1,0 +1,113 @@
+@use "../../../assets/scss/fonts" as *;
+@use "../../../assets/scss/variables" as *;
+@use "../../../assets/scss/mixins" as *;
+
+.detail-page {
+  box-sizing: border-box;
+  @include caption-r();
+  @include respond{
+    padding: 0 2.5rem;
+    // margin-top: 3.5rem;
+  }
+
+  &--center {
+    min-height: 100vh;
+    @include flex-layout(column, center, center, 0.5rem);
+    font-size: 0.875rem;
+  }
+  .detail-page-map {
+    @include flex-layout(column, flex-start, stretch, 0.75rem);
+    @include respond {
+      max-width: 1200px;
+      @include flex-layout(row, flex-start, stretch, 2rem);
+      width: 100%;
+    }
+    .parking-scroll {
+      width: 100%;
+      max-height: calc(100vh - 140px);
+      @include respond {
+        flex: 1 1 auto;
+        max-height: calc(100vh );
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+.reservation-info {
+  margin-top: 0.75rem;
+  @include respond {
+    flex: 1 1 auto;
+    margin-top: 0;
+  }
+}
+
+// 팝업
+.reserve-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  @include flex-layout(column, center, center, 0);
+  z-index: 40;
+  .reserve-popup {
+    background: $color-white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 360px;
+    position: relative;
+    .reserve-popup-close {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      border: none;
+      background: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .reserve-popup-body {
+      margin-top: 12px;
+      .reserve-info {
+        padding: 1rem;
+        .reserve-select-info {
+          margin-bottom: 10px;
+          @include flex-layout("",space-between,"","");
+
+          .reserve-info-name {
+            @include caption-b();
+          }
+          .reserve-info-code {
+            @include flex-layout(row, flex-start, center, 2rem);
+
+            .reserve-code {
+              @include title-b();
+            }
+          }
+        }
+      }
+    }
+  }
+  .reserve-popup-button {
+    @include btn-theme();
+    width: 100%;
+  }
+}
+
+//데스크탑일 때 사진이랑 상세
+
+
+  .parking-header-desktop {
+  width: 100%;
+  height: 300px;          
+  border-radius: 1rem;
+  overflow: hidden;     
+  margin-bottom: 1rem;
+  background: #000;       
+}
+
+.parking-panorama {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

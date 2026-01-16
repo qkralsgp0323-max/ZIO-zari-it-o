@@ -5,7 +5,7 @@
 * **설명:** 기획부터 디자인, 개발까지 직접 참여하였으며, **Supabase** 기반으로 실사용 가능한 예약/결제 로직을 구현한 주차장 관리 시스템입니다.
 * **진행 기간:** 2026.01.02~ 2025.01.13 (8일)
 * **개발 인원:** FrontEnd 6인 (Team Project)
-* **배포 링크:** [바로가기 URL 클릭]
+* **배포 링크:** (https://qkralsgp0323-max.github.io/ZIO-zari-it-o/)
 
 ## 2. 사용 기술 스택 (Tech Stack)
 * **Language:** JavaScript (ES6+)
